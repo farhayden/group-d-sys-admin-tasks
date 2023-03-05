@@ -2,10 +2,10 @@
 
 ## Group-d Server Details
 
-- Management Server IP address ` 68.218.47.211 ` (Puppet Master)
-- Application Server IP address ` 68.218.47.162 ` (Puppet Agent)
+- Management Server IP address ` 68.218.47.185 ` (Puppet Master)
+- Application Server IP address ` 68.218.47.211 ` (Puppet Agent)
 - Backup Server IP address ` 68.218.47.144 ` (Puppet Agent)
-- Database Server IP address ` 68.218.47.185 ` (Puppet Agent)
+- Database Server IP address ` 68.218.47.162 ` (Puppet Agent)
 
 ## SSH Into Servers Using Bash
 
