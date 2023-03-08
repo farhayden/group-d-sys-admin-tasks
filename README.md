@@ -12,3 +12,7 @@
  - open a ` git bash ` terminal
  - type command: ` ssh group-d@ ` followed by the IP address of the server you wish to connect to. For example `ssh group-d@28.218.47.211`
  - enter the servers password when prompted
+ 
+ ## Useful Commands
+ 
+ Refresh puppet on agent nodes ` sudo /opt/puppetlabs/bin/puppet agent --test `
