@@ -13,6 +13,22 @@
  - type command: ` ssh group-d@ ` followed by the IP address of the server you wish to connect to. For example `ssh group-d@28.218.47.211`
  - enter the servers password when prompted
  
- ## Useful Commands
+ ## Useful Commands / Locations
  
  Refresh puppet on agent nodes ` sudo /opt/puppetlabs/bin/puppet agent --test `
+ 
+ Site.pp (to manage modules run on each node) ` /etc/puppetlabs/code/environments/production/manifests/site.pp `
+ 
+ Modules folder (add modules here) `/etc/puppetlabs/code/modules `
+ 
+ ## Module Structure
+
+```
+ module_name
+   ├── files
+   ├── templates
+   │      └── module_name.conf.erb
+   └── manifests
+          └── init.pp
+```
+
