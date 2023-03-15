@@ -1,4 +1,13 @@
-# group-d-sys-admin-tasks
+# Group-D-System-Admin-Tasks
+
+Welcome to the group-d repository for operations engineering 2.
+
+- Ticket documentation can be found in the ` Wiki ` section.
+
+## Team Members
+
+- Greg Seal
+- Francis Hayden
 
 ## Group-d Server Details
 
