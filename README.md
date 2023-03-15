@@ -10,7 +10,7 @@
 ## SSH Into Servers Using Bash
 
  - open a ` git bash ` terminal
- - type command: ` ssh group-d@ ` followed by the IP address of the server you wish to connect to. For example `ssh group-d@28.218.47.211`
+ - type command: ` ssh group-d@ ` followed by the IP address of the server you wish to connect to. For example `ssh group-d@68.218.47.211`
  - enter the servers password when prompted
  
  ## Useful Commands / Locations
