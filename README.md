@@ -24,7 +24,7 @@ Welcome to the group-d repository for operations engineering 2.
  
  ## Useful Commands / Locations
  
- Refresh puppet on agent nodes ` sudo /opt/puppetlabs/bin/puppet agent --test `
+ Refresh puppet on agent nodes ` sudo /opt/puppetlabs/bin/puppet agent --test ` alias: ` run-puppet `
  
  Site.pp (to manage modules run on each node) ` /etc/puppetlabs/code/environments/production/manifests/site.pp `
  
