@@ -30,6 +30,8 @@ Welcome to the group-d repository for operations engineering 2.
  
  Modules folder (add modules here) `/etc/puppetlabs/code/modules `
  
+ ` http://68.218.47.185/nagios3 ` nagios server
+ 
  ## Module Structure
 
 ```
