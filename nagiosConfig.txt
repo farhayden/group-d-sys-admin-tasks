@@ -1,0 +1,139 @@
+class nagios::config {
+        # Files
+        file { "/etc/nagios3/nagios.cfg":
+                ensure => present,
+                owner => "root",
+                group => "www-data",
+                mode => "0644",
+                source => "puppet:///modules/nagios/etc/nagios3/nagios.cfg",
+                require => Package['nagios3'],
+        }
+        file { "/etc/nagios3/htpasswd.users":
+                ensure => present,
+                owner => "root",
+                group => "www-data",
+                mode => "0440",
+                source => "puppet:///modules/nagios/etc/nagios3/htpasswd.users",
+                require => Package['nagios3'],
+        }
+        file { "/etc/nagios3/conf.d":
+                ensure => directory,
+                owner => "root",
+                group => "puppet",
+                mode => "0775",
+                require => Package['nagios3'],
+        }
+# Hosts
+        nagios_host { "Database":
+                target => "/etc/nagios3/conf.d/ppt_hosts.cfg",
+                alias => "db",
+                check_period => "24x7",
+                max_check_attempts => 3,
+                check_command => "check-host-alive",
+                notification_interval => 30,
+                notification_period => "24x7",
+                notification_options => "d,u,r",
+                mode => "0644",
+        }
+        nagios_host { "Backup":
+                target => "/etc/nagios3/conf.d/ppt_hosts.cfg",
+                alias => "backups",
+                check_period => "24x7",
+                max_check_attempts => 3,
+                check_command => "check-host-alive",
+                notification_interval => 30,
+                notification_period => "24x7",
+                notification_options => "d,u,r",
+                mode => "0644",
+        }
+        nagios_host { "mgmt.foo.org.nz":
+                target => "/etc/nagios3/conf.d/ppt_hosts.cfg",
+                alias => "mgmt",
+                check_period => "24x7",
+                max_check_attempts => 3,
+                check_command => "check-host-alive",
+                notification_interval => 30,
+                notification_period => "24x7",
+                notification_options => "d,u,r",
+                mode => "0644",
+        }
+        nagios_host { "Application":
+                target => "/etc/nagios3/conf.d/ppt_hosts.cfg",
+                alias => "app",
+                check_period => "24x7",
+                max_check_attempts => 3,
+                check_command => "check-host-alive",
+                notification_interval => 30,
+                notification_period => "24x7",
+                notification_options => "d,u,r",
+                mode => "0644",
+        }
+
+# Host Groups
+        nagios_hostgroup {"my-ssh-servers":
+                target => "/etc/nagios3/conf.d/ppt_hostgroups.cfg",
+                mode => "0444",
+                alias => "My SSH servers",
+                members => "mgmt.foo.org.nz, Database, Backup, Application",
+        }
+        nagios_hostgroup {"my-db-servers":
+                target => "/etc/nagios3/conf.d/ppt_hostgroups.cfg",
+                mode => "0444",
+                alias => "My DB servers",
+                members => "Database",
+        }
+        nagios_hostgroup {"remote-disks":
+                target => "/etc/nagios3/conf.d/ppt_hostgroups.cfg",
+                mode => "0444",
+                alias => "Remote Disks",
+                members => "Database, Backup, Application",
+        }
+
+# Services
+        nagios_service {"nrpe":
+                service_description => "nrpe servers",
+                hostgroup_name => "remote-disks",
+                target => "/etc/nagios3/conf.d/ppt_services.cfg",
+                check_command => "check_nrpe!check_sda1",
+                max_check_attempts => 3,
+                retry_check_interval => 1,
+                normal_check_interval => 5,
+                check_period => "24x7",
+                notification_interval => 30,
+                notification_period => "24x7",
+                notification_options => "w,u,c",
+                contact_groups => "admins",
+                mode => "0444",
+        }
+
+        nagios_service {"ssh":
+                service_description => "ssh servers",
+                hostgroup_name => "my-ssh-servers",
+                target => "/etc/nagios3/conf.d/ppt_services.cfg",
+                check_command => "check_ssh",
+                max_check_attempts => 3,
+                retry_check_interval => 1,
+                normal_check_interval => 5,
+                check_period => "24x7",
+                notification_interval => 30,
+                notification_period => "24x7",
+                notification_options => "w,u,c",
+                contact_groups => "admins",
+                mode => "0444",
+        }
+        nagios_service {"mariadb":
+                service_description => "db servers",
+                hostgroup_name => "my-db-servers",
+                target => "/etc/nagios3/conf.d/ppt_services.cfg",
+                check_command => "check_mysql_cmdlinecred!nagios!mypasswd",
+                max_check_attempts => 3,
+                retry_check_interval => 1,
+                normal_check_interval => 5,
+                check_period => "24x7",
+                notification_interval => 30,
+                notification_period => "24x7",
+                notification_options => "w,u,c",
+                contact_groups => "admins",
+                mode => "0444",
+        }
+}
