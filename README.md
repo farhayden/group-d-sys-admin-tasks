@@ -8,19 +8,6 @@ Welcome to the group-d repository for operations engineering 2.
 
 - Greg Seal
 - Francis Hayden
-
-## Group-d Server Details
-
-- Management Server IP address ` 68.218.47.185 ` (Puppet Master)
-- Application Server IP address ` 68.218.47.211 ` (Puppet Agent)
-- Backup Server IP address ` 68.218.47.144 ` (Puppet Agent)
-- Database Server IP address ` 68.218.47.162 ` (Puppet Agent)
-
-## SSH Into Servers Using Bash
-
- - open a ` git bash ` terminal
- - type command: ` ssh group-d@ ` followed by the IP address of the server you wish to connect to. For example `ssh group-d@68.218.47.211`
- - enter the servers password when prompted
  
  ## Useful Commands / Locations
  
@@ -29,8 +16,6 @@ Welcome to the group-d repository for operations engineering 2.
  Site.pp (to manage modules run on each node) ` /etc/puppetlabs/code/environments/production/manifests/site.pp `
  
  Modules folder (add modules here) `/etc/puppetlabs/code/modules `
- 
- ` http://68.218.47.185/nagios3 ` nagios server
  
  ## Module Structure
 
